@@ -1,0 +1,32 @@
+{
+  "name": "@toddself/signup",
+  "version": "1.0.0",
+  "description": "Newsletter signup",
+  "main": "signup.js",
+  "scripts": {
+    "test": "LOG_LEVEL=none tap test/*spec.js",
+    "coverage": "LOG_LEVEL=none tap test/*spec.js --cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toddself/signup.git"
+  },
+  "author": "Todd Kennedy <todd@selfassembled.org>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/toddself/signup/issues"
+  },
+  "homepage": "https://github.com/toddself/signup#readme",
+  "dependencies": {
+    "bunyan": "~1.5.1",
+    "mysql": "~2.9.0",
+    "nodemailer": "~1.4.0",
+    "nodemailer-ses-transport": "~1.3.0"
+  },
+  "devDependencies": {
+    "mockmailer": "~1.0.1",
+    "proxyquire": "~1.7.2",
+    "request": "~2.62.0",
+    "tap": "~1.4.1"
+  }
+}

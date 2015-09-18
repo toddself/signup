@@ -1,0 +1,33 @@
+{
+  "http": {
+    "port": 3000,
+    "listenIP": "127.0.0.1",
+    "hostname": "example.com",
+    "display": "example!"
+  },
+  "mysql": {
+    "user": "test",
+    "pass": "lol",
+    "host": "localhost",
+    "post": 3306,
+    "database": "databasename"
+  },
+  "email": {
+    "address": "username@gmail.com",
+    "name": "Example User",
+    "transportName": "",
+    "transportConfig": {
+      "service": "gmail",
+      "auth": {
+        "user": "sender@gmail.com",
+        "pass": "password"
+      }
+    }
+  },
+  "security": {
+    "hash": "some string for salting hashes"
+  },
+  "log": {
+    "level": "info"
+  }
+}
