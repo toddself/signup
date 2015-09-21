@@ -1,5 +1,5 @@
 {
-  "name": "@toddself/signup",
+  "name": "signup",
   "version": "1.0.0",
   "description": "Newsletter signup",
   "main": "signup.js",
