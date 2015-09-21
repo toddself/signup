@@ -4,7 +4,7 @@ const url = require('url')
 
 const transporter = require('./mail')
 const config = require('./config')
-const log = require('./log')
+const log = require('./log')()
 
 module.exports = function sendVerification (email, hash, cb) {
   const verifyUrl = url.format({

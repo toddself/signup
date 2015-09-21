@@ -4,19 +4,22 @@ const http = require('http')
 
 const request = require('request')
 const test = require('tap').test
-const proxyquire = require('proxyquire')
-
-const router = proxyquire('../router', {
-  './addUser': responder,
-  './removeUser': responder,
-  './emailList': responder,
-  './verifyUser': responder
-})
-const sendResponse = require('../send-response')
+const proxyquire = require('proxyquire').noCallThru()
 
 function responder (req, res, urlInfo) {
   sendResponse(res, 200, 'ok')
 }
+
+// we want to mock out the responders to make it so we don't have to mock out
+// all the components -- since each responder is individually tested, we are
+// really just trying to make sure our router works correctly
+const router = proxyquire('../router', {
+  './add-user': responder,
+  './remove-user': responder,
+  './email-list': responder,
+  './verify-user': responder
+})
+const sendResponse = require('../send-response')
 
 const server = http.createServer(router)
 server.listen(3000)

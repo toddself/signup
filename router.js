@@ -6,7 +6,7 @@ const removeUser = require('./remove-user')
 const emailList = require('./email-list')
 const verifyUser = require('./verify-user')
 const sendResponse = require('./send-response')
-const log = require('./log')
+const log = require('./log')()
 
 function return404 (req, res) {
   return sendResponse(res, 404, 'Not found')

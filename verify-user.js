@@ -1,6 +1,6 @@
 'use strict'
 
-const log = require('./log')
+const log = require('./log')()
 const sendResponse = require('./send-response')
 
 module.exports = function verify (req, res, urlInfo, conn) {

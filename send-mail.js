@@ -3,7 +3,7 @@
 const url = require('url')
 const transporter = require('./mail')
 const config = require('./config')
-const log = require('./log')
+const log = require('./log')()
 
 function sendMail (row, payload, cb) {
   const siteUrl = url.format({

@@ -12,18 +12,21 @@ function reqSerializer (req) {
   }
 }
 
-const log = bunyan.createLogger({
-  name: 'signup',
-  serializers: {
-    err: bunyan.stdSerializers.err,
-    req: reqSerializer
-  },
-  streams: [
-    {
-      level: process.env.LOG_LEVEL || config.log.level || 'info',
-      stream: config.log.stream || process.stdout
-    }
-  ]
-})
+const log = function (override) {
+  override ? console.log('i am overriding the stream') : ''
+  return bunyan.createLogger({
+    name: 'signup',
+    serializers: {
+      err: bunyan.stdSerializers.err,
+      req: reqSerializer
+    },
+    streams: [
+      {
+        level: process.env.LOG_LEVEL || config.log.level || 'info',
+        stream: override || config.log.stream || process.stdout
+      }
+    ]
+  })
+}
 
 module.exports = log

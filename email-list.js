@@ -1,7 +1,7 @@
 'use strict'
 
 const sendMail = require('./send-mail')
-const log = require('./log')
+const log = require('./log')()
 const sendResponse = require('./send-response')
 
 module.exports = function send (req, res, urlInfo, conn) {

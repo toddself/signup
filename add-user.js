@@ -3,7 +3,7 @@
 const crypto = require('crypto')
 
 const sendVerification = require('./send-verification')
-const log = require('./log')
+const log = require('./log')()
 const config = require('./config')
 const sendResponse = require('./send-response')
 
@@ -34,7 +34,7 @@ module.exports = function addUser (req, res, urlInfo, conn) {
 
     const hashText = `${email}:${config.security.hash}:${(new Date()).getTime()}`
     const hash = crypto.createHash('sha1').update(hashText).digest('hex')
-    const query = `INSERT INTO users (email, hash, ip, verified) VALUES ("${conn.escape(email)}", "${hash}", "${ip}", "f")`
+    const query = `INSERT INTO users (email, hash, ip, verified) VALUES (${conn.escape(email)}, "${hash}", ${ip}, "f")`
     log.info(`Making query ${query}`)
     conn.query(query, function (err) {
       if (err) {

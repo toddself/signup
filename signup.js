@@ -4,7 +4,7 @@ const http = require('http')
 
 const connectDB = require('./connect-db')
 const config = require('./config')
-const log = require('./log')
+const log = require('./log')()
 const router = require('./router')
 
 function runServer (cb) {

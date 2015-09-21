@@ -1,0 +1,8 @@
+services:
+  - mysql
+language: node_js
+node_js:
+  - "4.x"
+before_script:
+  - mysql -uroot -e 'create database signup'
+  - mysql -uroot < table-schema.sql

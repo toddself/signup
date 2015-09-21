@@ -1,7 +1,7 @@
 'use strict'
 
 const sendResponse = require('./send-response')
-const log = require('./log')
+const log = require('./log')()
 const config = require('./config')
 
 module.exports = function removeUser (req, res, urlInfo, conn) {
