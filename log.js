@@ -13,7 +13,6 @@ function reqSerializer (req) {
 }
 
 const log = function (override) {
-  override ? console.log('i am overriding the stream') : ''
   return bunyan.createLogger({
     name: 'signup',
     serializers: {
