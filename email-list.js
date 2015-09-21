@@ -1,10 +1,18 @@
 'use strict'
 
+const auth = require('basic-auth')
+
 const sendMail = require('./send-mail')
 const log = require('./log')()
 const sendResponse = require('./send-response')
+const config = require('./config')
 
 module.exports = function send (req, res, urlInfo, conn) {
+  const creds = auth(req)
+  if (!creds || creds.name !== config.security.name || creds.pass !== config.security.pass) {
+    return sendResponse(res, 401, 'Authentication required', {'WWW-Authenticate': 'Basic realm="signup"'})
+  }
+
   if (req.headers['content-type'] !== 'application/json') {
     return sendResponse(res, 400, 'Expected application/json')
   }

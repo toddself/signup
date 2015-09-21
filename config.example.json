@@ -25,7 +25,9 @@
     }
   },
   "security": {
-    "hash": "some string for salting hashes"
+    "hash": "some string for salting hashes",
+    "name": "some user name for sending",
+    "pass": "some password for sending"
   },
   "log": {
     "level": "info"

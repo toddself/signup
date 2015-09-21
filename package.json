@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/toddself/signup#readme",
   "dependencies": {
+    "basic-auth": "~1.0.3",
     "bunyan": "~1.5.1",
     "mysql": "~2.9.0",
     "nodemailer": "~1.4.0",
