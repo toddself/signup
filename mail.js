@@ -6,7 +6,7 @@ const config = require('./config')
 
 let transportConfiguration
 if (config.email.transportName) {
-  log.info(`Transport plugin name ${config.email.transportName}`, {config: config.email.transportConfig})
+  log.info(`Detected transport plugin name ${config.email.transportName}`)
   let transport = require(config.email.transportName)
   transportConfiguration = transport(config.email.transportConfig)
 } else {
