@@ -1,0 +1,73 @@
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<div>
+  <h2>Follow this blog by email</h2>
+  <div class="js-message" style="display: none"></div>
+  <p><label>email: <input class="js-email" type="text"></label>
+  <p><button class="js-signup">Sign up</button>
+</div>
+<script>
+(function (window) {
+  var $ = window.jQuery
+  var $button = $('.js-signup')
+  var $email = $('.js-email')
+  var $message = $('.js-message')
+
+  function hideError () {
+    $email.on('input', function () {
+      $message.css('display', 'none')
+      $email.off('input')
+    })
+  }
+
+  function handleError (xhr, status, error) {
+    console && console.log && console.log('failure', status, error)
+    $message
+      .css('display', 'block')
+      .html('Sorry, an error occurred, please try again')
+    hideError()
+  }
+
+  function handleSuccess (data, status, xhr) {
+    console && console.log && console.log('success', data, status)
+    $message
+      .css('display', 'block')
+      .html('Please check your email')
+    setTimeout(function () {
+      $message.css('display', 'none')
+    }, 2500)
+  }
+
+  $button.on('click', function (evt) {
+    evt.preventDefault()
+    var address = $email.val()
+
+    if (!/.+@.+\..+/.test(address)) {
+      $message
+        .css('display', 'block')
+        .html([address, 'is an invalid email address'].join(' '))
+      hideError()
+      return false
+    }
+
+    var opts = {
+      url: '/signup/adduser',
+      contentType: 'application/json',
+      data: JSON.stringify({email: address}),
+      dataType: 'json',
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      statusCode: {
+        500: handleError,
+        400: handleError
+      },
+      success: handleSuccess,
+      error: handleError
+    }
+
+    $.ajax(opts)
+    return false
+  })
+})(window)
+</script>
