@@ -36,7 +36,6 @@ module.exports = function router (req, res, conn) {
     return sendResponse(res, 405, 'Method not allowed')
   }
 
-
   if (process.env.NODE_ENV === 'dev') {
     routingTable.GET['/form'] = sendForm
   }
